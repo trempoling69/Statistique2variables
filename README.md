@@ -2,9 +2,10 @@
 
 ### Context
 ```
-Suite à mon cours de maths sur les statistiques à deux variables j'ai décidé de réalisé un script JavaScript capable de résoudre les
-exercices à ma place. 
-Les calculs étant très long à tapé sur la calculatrice et très répétitif j'ai trouvé cette solution plus efficace
+Suite à mon cours de maths sur les statistiques à deux variables j'ai décidé de réalisé un script 
+JavaScript capable de résoudre les exercices à ma place. 
+Les calculs étant très long à tapé sur la calculatrice et très répétitif j'ai trouvé cette solution 
+plus efficace
 ``` 
 
 ### Fonction
