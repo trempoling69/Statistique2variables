@@ -2,18 +2,18 @@
 
 ### Context
 ```
-Suite à mon cours de maths sur les statistiques à deux variables j'ai décidé de réalisé un script 
+Suite à mon cours de maths sur les statistiques à deux variables j'ai décidé de réaliser un script 
 JavaScript capable de résoudre les exercices à ma place. 
-Les calculs étant très long à tapé sur la calculatrice et très répétitif j'ai trouvé cette solution 
+Les calculs étant très long à taper sur la calculatrice et très répétitif j'ai trouvé cette solution 
 plus efficace
 ``` 
 
 ### Fonction
 ```
 - Resolution par la méthode de Mayer
-- Résoltion par la méthode des moindres carrés
+- Résolution par la méthode des moindres carrés
 - Résolution par un ajustement exponentiel (et un écart en option)
-- Résoltion par la covariance
+- Résolution par la covariance
 - Calcul du coefficient de corrélation
 ``` 
 
