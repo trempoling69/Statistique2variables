@@ -27,4 +27,13 @@ Le code est volontairement long pour donner à l'utilisateur un maximum d'étape
 - Le design de l'interface web que je n'ai pas du tout travailler
 - Ajout de graphiques pour représenter les droites 
 - Interprétation rapide du coefficient de corrélation
+- Verification données utilisateurs 
+``` 
+
+## UPDATE 
+```
+- Ajout de l'affichage des droites dans un canvas grâce aux équations calculés 
+- Affichage du nuage de points entré dans le canvas
+- Ajout d'un champ pour selectionner le nombre de chiffres après la virgule 
+- Début du design 
 ``` 

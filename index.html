@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,74 +8,109 @@
     <link rel="stylesheet" href="style.css">
     <title>Calculs statistique</title>
 </head>
+
 <body>
-        <input type="text" id="valueXlist" placeholder="valeur X">
-        <input type="text" id="valueYlist" placeholder="valeur Y">
-        <input type="text" name="" id="ecartZ" placeholder="ECART Z" value="0">
-        <input type="submit" value="ENVOYER" id="envoyerlist">
+
+    <div class="header">
+        <div class="titre">
+            <h1>CALCUL STATISTIQUE</h1>
+        </div>
+        <div class="headerbas">
+            <div class="entree">
+                <div class="input">
+                    <label for="listx">X : </label>
+                    <input type="text" id="valueXlist" name="listx" placeholder="valeur X">
+                </div>
+                <div class="input">
+                    <label for="listy">Y :</label>
+                    <input type="text" id="valueYlist" name="listy" placeholder="valeur Y">
+                </div>
+                <div class="input">
+                    <label for="ecart">Ecart :</label>
+                    <input type="text" name="ecart" id="ecartZ" placeholder="ECART Z" value="0">
+                </div>
+                <div class="input">
+                    <label for="virgule">Arrondi :</label>
+                    <input type="number" name="virgule" id="arondi" placeholder="Nombre après la virgule (defaut 3)"
+                        min="0" max="10">
+                </div>
+                <input type="submit" value="Calculer" id="envoyerlist">
+            </div>
+            <canvas id="canvas" width="1000" height="500"></canvas>
+        </div>
+    </div>
+    <div class="affichageResultat">
         <p id="ListX">Liste des X : </p>
         <p id="ListY">Liste des Y : </p>
         <div class="methodeMayer">
             <h2>Methode de Mayer</h2>
             <p>1ère étapes caluls des points moyens G1 et G2</p>
-            <p>Pour faire cela on divise la liste en deux et on calcul les coordonées moyenne de chaque partie, dans cette exemple :</p>
-            <p id="listXG1">On calcul Xg1 avec : </p>
-            <p id="listYG1">On calcul Yg1 avec : </p>
-            <p id="resultg1">En calculant la moyenne de Xg1 et Yg1 on a donc : </p>
-            <p id="listXG2">On calcul Xg2 avec : </p>
-            <p id="listYG2">On calcul Yg2 avec : </p>
-            <p id="resultg2"></p>
-            <p id="resultg">On calcul ensuite G qui est le point moyen de l'ensemble qui vaut : </p>
+            <p>Pour faire cela on divise la liste en deux et on calcul les coordonées moyenne de chaque partie, dans
+                cette
+                exemple :</p>
+            <p>On calcul Xg1 avec : <span id="listXG1"></span></p>
+            <p>On calcul Yg1 avec : <span id="listYG1"></span></p>
+            <p>En calculant la moyenne de Xg1 et Yg1 on a donc : <span id="resultg1"></span></p>
+            <p>On calcul Xg2 avec : <span id="listXG2"></span></p>
+            <p>On calcul Yg2 avec : <span id="listYG2"></span></p>
+            <p><span id="resultg2"></span></p>
+            <p>On calcul ensuite G qui est le point moyen de l'ensemble qui vaut : <span id="resultg"></span></p>
             <p>On cherche maintenant l'équation de la droite, sous la forme y = a * x + b</p>
-            <p id="calcula">Commençons par calculer a qui vaut : </p>
-            <p id="resulta">Donc </p>
-            <p>On cherche maintenant à trouver b, pour cela on sait que la droite passe par le point G1, on remplace alors dans 
+            <p>Commençons par calculer a qui vaut : <span id="calcula"></span></p>
+            <p>Donc : <span id="resulta"></span></p>
+            <p>On cherche maintenant à trouver b, pour cela on sait que la droite passe par le point G1, on remplace
+                alors
+                dans
                 l'equation de la droite les valeur X et Y par Xg1 et Yg1
             </p>
-            <p id="equationPourb">On résout alors : </p>
-            <p id="resultb">Ce qui donne : </p>
-            <p id="equationMayer">On peut donc conclure l'equation de la droite : </p>
+            <p>On résout alors : <span id="equationPourb"></span></p>
+            <p>Ce qui donne : <span id="resultb"></span></p>
+            <p>On peut donc conclure l'equation de la droite : <span id="equationMayer"></span></p>
         </div>
         <div class="methodeCov">
             <h2>Méthode avec la covariance</h2>
             <p>La covariance vaut : (1/n) * somme(xi * yi - moyenne(x)*moyenne(y))</p>
-            <p id="resultCov">On a donc : </p>
+            <p>On a donc : <span id="resultCov"></span></p>
             <p>On calcul ensuite la variance qui vaut la covariance(x,x)</p>
-            <p id="resultVar">Elle vaut donc : </p>
+            <p>Elle vaut donc : <span id="resultVar"></span></p>
             <p>On sait que a vaut : a = cov(x,y) / variance(x) </p>
-            <p id="resultaParCov">On a donc : </p>
+            <p>On a donc : <span id="resultaParCov"></span></p>
             <p>On cherche maintenant b, on sait que moyenne(y) = a * moyenne(x) + b</p>
-            <p id="resultbParCov">On a donc : </p>
-            <p id="equationCov">On obtient alors l'équation suivante : </p>
+            <p>On a donc : <span id="resultbParCov"></span></p>
+            <p>On obtient alors l'équation suivante : <span id="equationCov"></span></p>
         </div>
         <div class="methodeMC">
             <h2>Méthode des moindres carrés</h2>
             <p>On cherche une equation de droite (droite de regression) de la forme y = m * x + h</p>
-            <p>On commence par chercher m qui vaut : m = somme( ( xi - moyenne(x) ) * (yi - moyenne(y) ) / somme((xi - moyenne(x))**2)</p>
-            <p id="resultatm">On a donc : </p>
+            <p>On commence par chercher m qui vaut : m = somme( ( xi - moyenne(x) ) * (yi - moyenne(y) ) / somme((xi -
+                moyenne(x))**2)</p>
+            <p>On a donc : <span id="resultatm"></span></p>
             <p>On calcul ensuite h qui vaut : h = moyenne(y) - m * moyenne(x)</p>
-            <p id="resultath">On a donc : </p>
-            <p id="equationMC">On trouve alors l'equation : </p>
+            <p>On a donc : <span id="resultath"></span></p>
+            <p>On trouve alors l'equation : <span id="equationMC"></span></p>
         </div>
         <div class="coeffCor">
             <h2>Calcul du coefficient de corrélation</h2>
-            <p>Le coeff vaut : r = somme((xi-moyenne(x))*(yi - moyenne(y))) / sqrt(somme(xi - moyenne(x))**2) * sqrt(somme(yi - moyenne(y))**2)</p>
-            <p id="resultcoeff">On obtient donc : </p>
+            <p>Le coeff vaut : r = somme((xi-moyenne(x))*(yi - moyenne(y))) / sqrt(somme(xi - moyenne(x))**2) *
+                sqrt(somme(yi - moyenne(y))**2)</p>
+            <p>On obtient donc : <span id="resultcoeff"></span></p>
         </div>
         <div class="ajustExpo">
             <h2>Méthodes des ajustement exponentiel</h2>
             <p>On commence par remplacer les y par z = ln(y)</p>
-            <p id="listz">On obtient la liste : </p>
+            <p>On obtient la liste : <span id="listz"></span></p>
             <p>On cherche l'equation ln(y) = m * x + h</p>
-            <p>On commence par chercher m qui vaut : m = somme( ( xi - moyenne(x) ) * (zi - moyenne(z) ) / somme((xi - moyenne(x))**2)</p>
-            <p id="resultatmZ">On trouve : </p>
+            <p>On commence par chercher m qui vaut : m = somme( ( xi - moyenne(x) ) * (zi - moyenne(z) ) / somme((xi -
+                moyenne(x))**2)</p>
+            <p>On trouve : <span id="resultatmZ"></span></p>
             <p>On calcul ensuite h qui vaut : h = moyenne(z) - m * moyenne(x)</p>
-            <p id="resultathZ">On trouve : </p>
-            <p id="equationAE">On trouve alors l'equation : </p>
+            <p>On trouve : <span id="resultathZ"></span></p>
+            <p>On trouve alors l'equation : <span id="equationAE"></span></p>
             <p>On peut ensuite appliquer e pour trouver l'equation selon y</p>
-            <p id="equationFAE">On obtient : </p>
+            <p>On obtient : <span id="equationFAE"></span></p>
         </div>
-        
+    </div>
 </body>
 <script src="./app.js"></script>
+
 </html>
